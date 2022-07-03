@@ -2,8 +2,8 @@ import pygame
 import random
 
 from sys import exit
-from pygame.locals import *
 from time import time
+from pygame.locals import *
 
 pygame.init()
 
@@ -17,18 +17,15 @@ def draw_text(posx,posy, msg, screen, size=26):
 
 #Apple Position
 def pos_maca(maca,x,y,snake_body):
-    if x % 40 != 0:
-        x += 40-(x%40)
-    if y % 40 != 0:
-        y += 40-(y%40)
+    if x % 40 != 0: x += 40-(x%40)
+        
+    if y % 40 != 0: y += 40-(y%40)
+        
 
-    if (x,y) in snake_body:
+    while (x,y) in snake_body:
         x, y = random.randint(0, 760), random.randint(0, 760)
-        if x % 40 != 0:
-            x += 40-(x%40)
-        if y % 40 != 0:
-            y += 40-(y%40)
-        return pos_maca(maca,x,y, snake_body)
+        if x % 40 != 0: x += 40-(x%40)
+        if y % 40 != 0: y += 40-(y%40)
     
     maca.x = x
     maca.y = y
@@ -132,9 +129,6 @@ def game():
             for i, pos in enumerate(snake_body):
                 pygame.draw.rect(screen, COLOR_SNAKE[i%2], (pos[0], pos[1], 40, 40))
             
-            
-            
-
             draw_text(680, 40,f'Points: {points}', screen)
             draw_text(600, 40, f"Size: {max_body}",screen)
             pygame.draw.rect(screen, COLOR_SNAKE[0], snake)
