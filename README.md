@@ -4,7 +4,7 @@ Snake game made with python, using the <a href="https://www.pygame.org/docs/">py
 
 ### Requirements
 - Python3 
-- HTML/CSS/JS
+- Pygame
 
 ### What I improved?
 
